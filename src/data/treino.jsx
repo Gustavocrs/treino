@@ -1,7 +1,7 @@
 export const cronograma = [
-  {dia: "Segunda-feira", treino: "Dia 1 – Core + Superiores (Empurrar)"},
-  {dia: "Quarta-feira", treino: "Dia 2 – Core + Inferiores"},
-  {dia: "Sexta-feira", treino: "Dia 3 – Core + Superiores (Puxar)"},
+  {dia: "Dia 1", treino: "Core + Superiores (Empurrar)"},
+  {dia: "Dia 2", treino: "Core + Inferiores"},
+  {dia: "Dia 3", treino: "Core + Superiores (Puxar)"},
 ];
 
 export const alongamento = [
@@ -28,7 +28,7 @@ export const aquecimento = [
 
 export const treinoDias = [
   {
-    titulo: "Dia 1 – Core + Superiores (Empurrar)",
+    titulo: "Core + Superiores (Empurrar)",
     exercicios: [
       {nome: "Dead Bug", series: "3", reps: "10-12"},
       {nome: "Bird Dog", series: "3", reps: "10 por lado"},
@@ -38,7 +38,7 @@ export const treinoDias = [
     ],
   },
   {
-    titulo: "Dia 2 – Core + Inferiores",
+    titulo: "Core + Inferiores",
     exercicios: [
       {nome: "Dead Bug", series: "3", reps: "10-12"},
       {nome: "Bird Dog", series: "3", reps: "10 por lado"},
@@ -56,7 +56,7 @@ export const treinoDias = [
     ],
   },
   {
-    titulo: "Dia 3 – Core + Superiores (Puxar)",
+    titulo: "Core + Superiores (Puxar)",
     exercicios: [
       {nome: "Dead Bug", series: "3", reps: "10-12"},
       {nome: "Bird Dog", series: "3", reps: "10 por lado"},
