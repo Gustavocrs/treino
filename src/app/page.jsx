@@ -10,10 +10,8 @@ export default function Treino() {
 
   const getNome = (ex) =>
     typeof ex.nome === "object" ? ex.nome.nome : ex.nome;
-
   const getVideo = (ex) =>
     typeof ex.nome === "object" && ex.nome.video ? ex.nome.video : null;
-
   const getImagem = (ex) =>
     typeof ex.nome === "object" && ex.nome.imagem ? ex.nome.imagem : null;
 
@@ -29,7 +27,9 @@ export default function Treino() {
 
       {/* 🔵 Cronograma */}
       <Card className="p-4">
-        <h2 className="text-xl font-semibold mb-4">Cronograma Semanal</h2>
+        <h2 className="text-xl font-semibold mb-4 uppercase">
+          Cronograma Semanal
+        </h2>
         <div className="flex flex-wrap gap-4">
           {cronograma.map((item) => (
             <button
@@ -49,7 +49,7 @@ export default function Treino() {
 
       {/* 🔥 Aquecimento */}
       <Card className="p-4">
-        <h2 className="text-xl font-semibold mb-4">Aquecimento</h2>
+        <h2 className="text-xl font-semibold mb-4 uppercase">Aquecimento</h2>
         <div className="overflow-x-auto">
           <table className="w-full border">
             <thead className="bg-muted">
@@ -75,7 +75,9 @@ export default function Treino() {
       {/* 🏋️‍♂️ Treino do Dia */}
       {treinoDoDia && (
         <Card className="p-4">
-          <h2 className="text-xl font-semibold mb-4">{treinoDoDia.titulo}</h2>
+          <h2 className="text-xl font-semibold mb-4 uppercase">
+            {treinoDoDia.titulo}
+          </h2>
           <div className="overflow-x-auto">
             <table className="w-full border">
               <thead className="bg-muted">
@@ -83,7 +85,6 @@ export default function Treino() {
                   <th className="border p-2">Exercício</th>
                   <th className="border p-2">Séries</th>
                   <th className="border p-2">Repetições</th>
-                  <th className="border p-2">Visual</th>
                 </tr>
               </thead>
               <tbody>
@@ -92,25 +93,6 @@ export default function Treino() {
                     <td className="border p-2">{getNome(ex)}</td>
                     <td className="border p-2">{ex.series}</td>
                     <td className="border p-2">{ex.reps}</td>
-                    <td className="border p-2 space-y-2">
-                      {getImagem(ex) && (
-                        <img
-                          src={getImagem(ex)}
-                          alt={getNome(ex)}
-                          className="max-w-[120px] rounded"
-                        />
-                      )}
-                      {getVideo(ex) && (
-                        <a
-                          href={getVideo(ex)}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-blue-600 underline block"
-                        >
-                          Vídeo
-                        </a>
-                      )}
-                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -121,36 +103,38 @@ export default function Treino() {
 
       {/* 🧘 Alongamento */}
       <Card className="p-4">
-        <h2 className="text-xl font-semibold mb-4">Alongamento</h2>
-        <ul className="list-disc pl-6 space-y-2">
-          {alongamento.map((item, i) => {
-            if (typeof item === "string") {
-              return <li key={i}>{item}</li>;
-            }
-            return (
-              <li key={i}>
-                {item.nome}{" "}
-                {item.imagem && (
-                  <img
-                    src={item.imagem}
-                    alt={item.nome}
-                    className="inline-block max-w-[100px] rounded ml-2"
-                  />
-                )}
-                {item.video && (
-                  <a
-                    href={item.video}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 underline ml-2"
-                  >
-                    Vídeo
-                  </a>
-                )}
-              </li>
-            );
-          })}
-        </ul>
+        <h2 className="text-xl font-semibold mb-4 uppercase">Alongamento</h2>
+        <div className="overflow-x-auto">
+          <table className="w-full border">
+            <thead className="bg-muted">
+              <tr>
+                <th className="border p-2">Exercício</th>
+                <th className="border p-2">Séries</th>
+                <th className="border p-2">Repetições</th>
+              </tr>
+            </thead>
+            <tbody>
+              {alongamento.map((item, i) => {
+                if (typeof item === "string") {
+                  return (
+                    <tr key={i}>
+                      <td className="border p-2" colSpan={3}>
+                        {item}
+                      </td>
+                    </tr>
+                  );
+                }
+                return (
+                  <tr key={i}>
+                    <td className="border p-2">{item.nome}</td>
+                    <td className="border p-2">{item.series ?? "-"}</td>
+                    <td className="border p-2">{item.reps ?? "-"}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       </Card>
     </div>
   );
